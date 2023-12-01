@@ -169,7 +169,7 @@ class deepforest(pl.LightningModule):
             callbacks (list): a list of pytorch-lightning callback classes
         """
         # If val data is passed, monitor learning rate and setup classification metrics
-        if not self.config["validation"]["csv_file"] is None:
+        if self.config["validation"]["csv_file"] is not None:
             if logger is not None:
                 lr_monitor = LearningRateMonitor(logging_interval='epoch')
                 eval_callback = iou_callback(
